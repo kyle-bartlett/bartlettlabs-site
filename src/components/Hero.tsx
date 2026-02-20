@@ -28,12 +28,12 @@ export default function Hero() {
         <Image
           src="/logo-emblem.png"
           alt="Bartlett Labs"
-          width={220}
-          height={220}
+          width={400}
+          height={400}
           priority
           className="logo-emblem"
           style={{
-            width: "clamp(140px, 18vw, 220px)",
+            width: "clamp(220px, 30vw, 400px)",
             height: "auto",
             display: "block",
           }}
