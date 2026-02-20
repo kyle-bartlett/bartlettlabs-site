@@ -23,14 +23,13 @@ export default function Header() {
           href="#"
           className="flex items-center gap-3 transition-colors hover:text-accent-light focus-visible:text-accent-light focus-visible:outline-none"
         >
-          <span className="relative inline-block h-8 w-8 overflow-hidden rounded-full">
-            <Image
-              src="/logo.png"
-              alt="Bartlett Labs"
-              fill
-              className="object-cover object-[center_22%] scale-[1.5]"
-            />
-          </span>
+          <Image
+            src="/logo-emblem.png"
+            alt="Bartlett Labs"
+            width={32}
+            height={32}
+            style={{ width: "32px", height: "auto", display: "block" }}
+          />
           <span className="font-heading text-sm tracking-[0.3em] text-silver uppercase">
             Bartlett Labs
           </span>

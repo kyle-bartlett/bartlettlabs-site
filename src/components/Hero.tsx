@@ -3,7 +3,17 @@ import ScrollIndicator from "./ScrollIndicator";
 
 export default function Hero() {
   return (
-    <section className="relative flex min-h-dvh flex-col items-center justify-center px-6">
+    <section
+      className="relative px-6"
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        minHeight: "100vh",
+        textAlign: "center",
+      }}
+    >
       {/* Radial glow behind logo */}
       <div
         className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full opacity-20"
@@ -14,23 +24,32 @@ export default function Hero() {
       />
 
       {/* Logo */}
-      <div className="logo-glow relative z-10 mb-8 h-[220px] w-[220px] overflow-hidden rounded-full">
+      <div className="logo-glow relative z-10" style={{ marginBottom: "24px" }}>
         <Image
-          src="/logo.png"
+          src="/logo-emblem.png"
           alt="Bartlett Labs"
-          fill
+          width={220}
+          height={220}
           priority
-          className="object-cover object-[center_22%] scale-[1.5]"
+          className="logo-emblem"
+          style={{
+            width: "clamp(140px, 18vw, 220px)",
+            height: "auto",
+            display: "block",
+          }}
         />
       </div>
 
       {/* Wordmark */}
-      <h1 className="text-metallic relative z-10 font-heading text-3xl tracking-[0.35em] sm:text-4xl md:text-5xl">
+      <h1
+        className="text-metallic relative z-10 font-heading text-3xl tracking-[0.35em] sm:text-4xl md:text-5xl"
+        style={{ marginBottom: "12px" }}
+      >
         BARTLETT LABS
       </h1>
 
       {/* Tagline */}
-      <p className="relative z-10 mt-5 text-lg font-light tracking-wide text-silver sm:text-xl">
+      <p className="relative z-10 text-lg font-light tracking-wide text-silver sm:text-xl">
         Engineering Tomorrow&apos;s Solutions
       </p>
 
