@@ -14,14 +14,13 @@ export default function Hero() {
       />
 
       {/* Logo */}
-      <div className="logo-glow relative z-10 mb-8">
+      <div className="logo-glow relative z-10 mb-8 h-[220px] w-[220px] overflow-hidden rounded-full">
         <Image
           src="/logo.png"
           alt="Bartlett Labs"
-          width={220}
-          height={220}
+          fill
           priority
-          className="rounded-full"
+          className="object-cover object-[center_38%] scale-[1.15]"
         />
       </div>
 
