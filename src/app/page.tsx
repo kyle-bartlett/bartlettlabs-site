@@ -1,8 +1,9 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import Verticals from "@/components/Verticals";
-import About from "@/components/About";
-import Contact from "@/components/Contact";
+import Services from "@/components/Services";
+import Proof from "@/components/Proof";
+import Process from "@/components/Process";
+import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -11,9 +12,10 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <Verticals />
-        <About />
-        <Contact />
+        <Services />
+        <Proof />
+        <Process />
+        <FinalCTA />
       </main>
       <Footer />
     </>

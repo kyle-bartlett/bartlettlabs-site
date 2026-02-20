@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cinzel, Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const cinzel = Cinzel({
@@ -15,30 +16,32 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Bartlett Labs | Engineering Tomorrow's Solutions",
+  title: "Bartlett Labs | AI Automation for Houston Businesses",
   description:
-    "Bartlett Labs is an innovation company spanning digital publishing, commerce, AI consulting, and software engineering.",
+    "Websites, chatbots, and internal workflow automation for Houston small businesses. Book a 15-minute call.",
   metadataBase: new URL("https://bartlettlabs.io"),
   openGraph: {
-    title: "Bartlett Labs",
-    description: "Engineering Tomorrow's Solutions",
+    title: "Bartlett Labs | AI Automation for Houston Businesses",
+    description:
+      "Websites, chatbots, and internal workflow automation for Houston small businesses.",
     url: "https://bartlettlabs.io",
     siteName: "Bartlett Labs",
     type: "website",
     images: [
       {
-        url: "/logo.png",
-        width: 1130,
-        height: 1144,
-        alt: "Bartlett Labs",
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Bartlett Labs — AI Automation for Houston Businesses",
       },
     ],
   },
   twitter: {
-    card: "summary",
-    title: "Bartlett Labs",
-    description: "Engineering Tomorrow's Solutions",
-    images: ["/logo.png"],
+    card: "summary_large_image",
+    title: "Bartlett Labs | AI Automation for Houston Businesses",
+    description:
+      "Websites, chatbots, and internal workflow automation for Houston small businesses.",
+    images: ["/og-image.png"],
   },
 };
 
@@ -49,6 +52,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${cinzel.variable} ${inter.variable}`}>
+      <head>
+        <link
+          href="https://assets.calendly.com/assets/external/widget.css"
+          rel="stylesheet"
+        />
+      </head>
       <body className="antialiased">
         {/* Ambient mist background */}
         <div className="mist-container" aria-hidden="true">
@@ -58,6 +67,11 @@ export default function RootLayout({
         </div>
 
         {children}
+
+        <Script
+          src="https://assets.calendly.com/assets/external/widget.js"
+          strategy="lazyOnload"
+        />
       </body>
     </html>
   );

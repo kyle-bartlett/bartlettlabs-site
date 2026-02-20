@@ -2,15 +2,25 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+
+const navLinks = [
+  { label: "Services", href: "/services" },
+  { label: "About", href: "/about" },
+];
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 100);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Close mobile menu on route change (link click)
+  const closeMenu = () => setMenuOpen(false);
 
   return (
     <header
@@ -19,9 +29,10 @@ export default function Header() {
       }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6">
-        <a
-          href="#"
-          className="flex items-center gap-3 transition-colors hover:text-accent-light focus-visible:text-accent-light focus-visible:outline-none"
+        {/* Logo */}
+        <Link
+          href="/"
+          className="flex items-center gap-3 transition-colors hover:text-accent-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-blue/60 rounded-sm"
         >
           <Image
             src="/logo-emblem.png"
@@ -33,24 +44,74 @@ export default function Header() {
           <span className="font-heading text-sm tracking-[0.3em] text-silver uppercase">
             Bartlett Labs
           </span>
-        </a>
+        </Link>
 
-        <div className="flex gap-8">
-          {[
-            { label: "Services", href: "#verticals" },
-            { label: "About", href: "#about" },
-            { label: "Contact", href: "#contact" },
-          ].map((item) => (
-            <a
+        {/* Desktop nav */}
+        <div className="hidden items-center gap-8 md:flex">
+          {navLinks.map((item) => (
+            <Link
               key={item.label}
               href={item.href}
-              className="text-sm text-text-muted transition-colors hover:text-text-primary focus-visible:text-text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent-blue/50 focus-visible:rounded-sm"
+              className="text-sm text-text-muted transition-colors hover:text-text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent-blue/50 focus-visible:rounded-sm"
             >
               {item.label}
-            </a>
+            </Link>
           ))}
+          <Link href="/contact" className="btn-primary text-xs py-2 px-5">
+            Contact
+          </Link>
         </div>
+
+        {/* Mobile hamburger */}
+        <button
+          type="button"
+          onClick={() => setMenuOpen((prev) => !prev)}
+          className="flex flex-col items-center justify-center gap-1.5 p-2 md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-blue/60 rounded-sm"
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+        >
+          <span
+            className={`block h-0.5 w-5 bg-silver transition-transform duration-300 ${
+              menuOpen ? "translate-y-2 rotate-45" : ""
+            }`}
+          />
+          <span
+            className={`block h-0.5 w-5 bg-silver transition-opacity duration-300 ${
+              menuOpen ? "opacity-0" : ""
+            }`}
+          />
+          <span
+            className={`block h-0.5 w-5 bg-silver transition-transform duration-300 ${
+              menuOpen ? "-translate-y-2 -rotate-45" : ""
+            }`}
+          />
+        </button>
       </nav>
+
+      {/* Mobile menu overlay */}
+      {menuOpen && (
+        <div className="header-glass absolute inset-x-0 top-full border-t border-silver/10 md:hidden">
+          <div className="flex flex-col gap-4 px-6 py-6">
+            {navLinks.map((item) => (
+              <Link
+                key={item.label}
+                href={item.href}
+                onClick={closeMenu}
+                className="text-sm text-text-muted transition-colors hover:text-text-primary"
+              >
+                {item.label}
+              </Link>
+            ))}
+            <Link
+              href="/contact"
+              onClick={closeMenu}
+              className="btn-primary text-xs py-2 px-5 text-center"
+            >
+              Contact
+            </Link>
+          </div>
+        </div>
+      )}
     </header>
   );
 }
