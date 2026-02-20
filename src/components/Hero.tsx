@@ -20,7 +20,7 @@ export default function Hero() {
           alt="Bartlett Labs"
           fill
           priority
-          className="object-cover object-[center_38%] scale-[1.15]"
+          className="object-cover object-[center_30%] scale-[1.3]"
         />
       </div>
 

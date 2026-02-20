@@ -28,7 +28,7 @@ export default function Header() {
               src="/logo.png"
               alt="Bartlett Labs"
               fill
-              className="object-cover object-[center_38%] scale-[1.15]"
+              className="object-cover object-[center_30%] scale-[1.3]"
             />
           </span>
           <span className="font-heading text-sm tracking-[0.3em] text-silver uppercase">
