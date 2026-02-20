@@ -26,7 +26,7 @@ export default function Hero() {
           height={400}
           priority
           style={{
-            width: "clamp(120px, 22vw, 200px)",
+            width: "clamp(180px, 30vw, 320px)",
             height: "auto",
             display: "block",
           }}
