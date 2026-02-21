@@ -1,21 +1,32 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { useRef, useEffect, useSyncExternalStore } from "react";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Edges, Html, Line } from "@react-three/drei";
-import type { Mesh } from "three";
+import Link from "next/link";
+import * as THREE from "three";
 
 /* ── reduced-motion check (client only, ssr: false) ─────── */
+function subscribeToMotionPreference(callback: () => void) {
+  const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+  mq.addEventListener("change", callback);
+  return () => mq.removeEventListener("change", callback);
+}
+
+function getMotionPreference() {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+function getServerSnapshot() {
+  return false;
+}
+
 function useReducedMotion(): boolean {
-  const [reduced, setReduced] = useState(false);
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReduced(mq.matches);
-    const handler = (e: MediaQueryListEvent) => setReduced(e.matches);
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
-  }, []);
-  return reduced;
+  return useSyncExternalStore(
+    subscribeToMotionPreference,
+    getMotionPreference,
+    getServerSnapshot,
+  );
 }
 
 /* ── block config ────────────────────────────────────────── */
@@ -35,8 +46,10 @@ const BLOCKS: BlockData[] = [
 ];
 
 const CENTER: [number, number, number] = [0, 0, 0];
+const WHITE_MAT = new THREE.MeshBasicMaterial({ color: 0xffffff });
+const BLUE_MAT = new THREE.MeshBasicMaterial({ color: 0x2563eb });
 
-/* ── floating outer block ────────────────────────────────── */
+/* ── floating outer block (imperative geometry) ──────────── */
 function FloatingBlock({
   pos,
   size,
@@ -45,56 +58,73 @@ function FloatingBlock({
   phase,
   paused,
 }: BlockData & { paused: boolean }) {
-  const ref = useRef<Mesh>(null!);
+  const groupRef = useRef<THREE.Group>(null!);
+  const meshRef = useRef<THREE.Mesh>(null!);
+
+  useEffect(() => {
+    const geo = new THREE.BoxGeometry(...size);
+    meshRef.current.geometry = geo;
+    meshRef.current.material = WHITE_MAT;
+    groupRef.current.position.set(...pos);
+    return () => { geo.dispose(); };
+  }, [pos, size]);
 
   useFrame(({ clock }) => {
     if (paused) return;
-    ref.current.position.y =
+    groupRef.current.position.y =
       pos[1] + Math.sin(clock.elapsedTime * 1.8 + phase) * 0.4;
   });
 
   return (
-    <mesh ref={ref} position={pos}>
-      <boxGeometry args={size} />
-      <meshBasicMaterial color="#ffffff" />
-      <Edges color="#000000" />
-      <Html center style={{ pointerEvents: "none" }}>
-        <a
-          href={href}
-          className="hero3d-label"
-          style={{ pointerEvents: "auto" }}
-        >
-          {label}
-        </a>
-      </Html>
-    </mesh>
+    <group ref={groupRef}>
+      <mesh ref={meshRef}>
+        <Edges color="#000000" />
+        <Html center style={{ pointerEvents: "none" }}>
+          <Link
+            href={href}
+            className="hero3d-label"
+            style={{ pointerEvents: "auto" }}
+          >
+            {label}
+          </Link>
+        </Html>
+      </mesh>
+    </group>
   );
 }
 
-/* ── center AI block ─────────────────────────────────────── */
+/* ── center AI block (imperative geometry) ───────────────── */
 function CenterBlock({ paused }: { paused: boolean }) {
-  const ref = useRef<Mesh>(null!);
+  const groupRef = useRef<THREE.Group>(null!);
+  const meshRef = useRef<THREE.Mesh>(null!);
+
+  useEffect(() => {
+    const geo = new THREE.BoxGeometry(1.4, 1.4, 1.4);
+    meshRef.current.geometry = geo;
+    meshRef.current.material = WHITE_MAT;
+    return () => { geo.dispose(); };
+  }, []);
 
   useFrame(({ clock }) => {
     if (paused) return;
-    ref.current.position.y = Math.sin(clock.elapsedTime * 1.2) * 0.25;
+    groupRef.current.position.y = Math.sin(clock.elapsedTime * 1.2) * 0.25;
   });
 
   return (
-    <mesh ref={ref} position={CENTER}>
-      <boxGeometry args={[1.4, 1.4, 1.4]} />
-      <meshBasicMaterial color="#ffffff" />
-      <Edges color="#000000" />
-      <Html center style={{ pointerEvents: "none" }}>
-        <a
-          href="/services"
-          className="hero3d-label hero3d-label--center"
-          style={{ pointerEvents: "auto" }}
-        >
-          AI
-        </a>
-      </Html>
-    </mesh>
+    <group ref={groupRef}>
+      <mesh ref={meshRef}>
+        <Edges color="#000000" />
+        <Html center style={{ pointerEvents: "none" }}>
+          <Link
+            href="/services"
+            className="hero3d-label hero3d-label--center"
+            style={{ pointerEvents: "auto" }}
+          >
+            AI
+          </Link>
+        </Html>
+      </mesh>
+    </group>
   );
 }
 
@@ -108,7 +138,14 @@ function Pulse({
   offset: number;
   paused: boolean;
 }) {
-  const ref = useRef<Mesh>(null!);
+  const ref = useRef<THREE.Mesh>(null!);
+
+  useEffect(() => {
+    const geo = new THREE.BoxGeometry(0.12, 0.12, 0.12);
+    ref.current.geometry = geo;
+    ref.current.material = BLUE_MAT;
+    return () => { geo.dispose(); };
+  }, []);
 
   useFrame(({ clock }) => {
     if (paused) return;
@@ -120,12 +157,20 @@ function Pulse({
     );
   });
 
-  return (
-    <mesh ref={ref}>
-      <boxGeometry args={[0.12, 0.12, 0.12]} />
-      <meshBasicMaterial color="#2563EB" />
-    </mesh>
-  );
+  return <mesh ref={ref} />;
+}
+
+/* ── ambient light setup ─────────────────────────────────── */
+function SceneLight() {
+  const { scene } = useThree();
+
+  useEffect(() => {
+    const light = new THREE.AmbientLight(0xffffff, 1);
+    scene.add(light);
+    return () => { scene.remove(light); };
+  }, [scene]);
+
+  return null;
 }
 
 /* ── scene composition ───────────────────────────────────── */
@@ -134,7 +179,7 @@ function Scene() {
 
   return (
     <>
-      <ambientLight intensity={1} />
+      <SceneLight />
 
       {/* Thin black connector lines */}
       {BLOCKS.map((b) => (

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     "AI automation for law firms, accounting practices, and consulting firms. Client intake, billing, and project tracking — delivered in 1 week.",
 };
 
-const useCases = [
+const solutions = [
   {
     title: "Client intake automation",
     description:
@@ -50,7 +50,7 @@ export default function ProfessionalServicesPage() {
           <div className="fade-in-section mb-16">
             <p className="label-mono text-accent-blue mb-3">What We Automate</p>
             <div className="grid gap-6 sm:grid-cols-3">
-              {useCases.map((uc) => (
+              {solutions.map((uc) => (
                 <div key={uc.title} className="card p-6">
                   <h3 className="font-heading text-sm font-semibold text-navy mb-2">
                     {uc.title}

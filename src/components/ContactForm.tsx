@@ -18,25 +18,30 @@ export default function ContactForm() {
     const form = e.currentTarget;
     const data = new FormData(form);
 
-    try {
-      const res = await fetch(`https://formspree.io/f/${formspreeId}`, {
-        method: "POST",
-        body: data,
-        headers: { Accept: "application/json" },
-      });
+    const res = await fetch(`https://formspree.io/f/${formspreeId}`, {
+      method: "POST",
+      body: data,
+      headers: { Accept: "application/json" },
+    }).catch(() => null);
 
-      if (res.ok) {
-        setStatus("success");
-        form.reset();
-      } else {
-        const json = await res.json();
-        setErrorMessage(json?.errors?.[0]?.message ?? "Something went wrong. Please try again.");
-        setStatus("error");
-      }
-    } catch {
+    if (!res) {
       setErrorMessage("Network error. Please check your connection and try again.");
       setStatus("error");
+      return;
     }
+
+    if (res.ok) {
+      setStatus("success");
+      form.reset();
+      return;
+    }
+
+    const json = await res.json().catch(() => null);
+    const message =
+      (json as Record<string, Array<{ message?: string }>> | null)?.errors?.[0]
+        ?.message ?? "Something went wrong. Please try again.";
+    setErrorMessage(message);
+    setStatus("error");
   };
 
   if (status === "success") {

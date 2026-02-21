@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     "AI automation for Houston clinics and healthcare practices. Patient scheduling, records, and follow-up workflows — delivered in 1 week.",
 };
 
-const useCases = [
+const solutions = [
   {
     title: "Patient scheduling & reminders",
     description:
@@ -50,7 +50,7 @@ export default function HealthcarePage() {
           <div className="fade-in-section mb-16">
             <p className="label-mono text-accent-blue mb-3">What We Automate</p>
             <div className="grid gap-6 sm:grid-cols-3">
-              {useCases.map((uc) => (
+              {solutions.map((uc) => (
                 <div key={uc.title} className="card p-6">
                   <h3 className="font-heading text-sm font-semibold text-navy mb-2">
                     {uc.title}

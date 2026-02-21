@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 export default function ChatBubble() {
   const [dismissed, setDismissed] = useState(false);
@@ -25,13 +26,13 @@ export default function ChatBubble() {
       )}
 
       {/* Branded button */}
-      <a
+      <Link
         href="/contact"
         className="flex h-12 w-12 items-center justify-center rounded-full bg-navy shadow-lg transition-transform hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-blue focus-visible:ring-offset-2"
         aria-label="Chat with us"
       >
         <span className="text-sm font-bold text-white tracking-tight">BL</span>
-      </a>
+      </Link>
     </div>
   );
 }

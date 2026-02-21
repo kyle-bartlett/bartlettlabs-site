@@ -46,12 +46,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.variable}>
-      <head>
-        <link
-          href="https://assets.calendly.com/assets/external/widget.css"
-          rel="stylesheet"
-        />
-      </head>
+      <head />
+
       <body className="bg-bg-primary text-text-primary font-body antialiased">
         {children}
 
