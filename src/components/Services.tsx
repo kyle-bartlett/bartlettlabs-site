@@ -68,20 +68,20 @@ export default function Services() {
     <section className="relative z-10 py-24 px-6">
       <div className="mx-auto max-w-6xl">
         <div className="fade-in-section mb-16 text-center">
-          <h2 className="font-heading text-2xl tracking-[0.2em] text-text-primary sm:text-3xl">
-            WHAT WE BUILD
+          <h2 className="font-heading text-2xl font-bold tracking-tight text-navy sm:text-3xl">
+            What We Build
           </h2>
-          <div className="section-divider mx-auto mt-6 w-24" />
+          <div className="section-divider mx-auto mt-4 w-16" />
         </div>
 
         <div className="grid gap-6 md:grid-cols-3">
           {services.map((s) => (
             <div
               key={s.title}
-              className="glass-card fade-in-section flex flex-col rounded-xl p-8"
+              className="card fade-in-section flex flex-col p-8"
             >
               <div className="mb-4">{s.icon}</div>
-              <h3 className="font-heading text-lg tracking-wider text-text-primary">
+              <h3 className="font-heading text-lg font-semibold text-navy">
                 {s.title}
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-silver">

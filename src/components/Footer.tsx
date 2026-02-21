@@ -4,12 +4,11 @@ const footerLinks = [
   { label: "Services", href: "/services" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
-  { label: "Ventures", href: "/ventures" },
 ];
 
 export default function Footer() {
   return (
-    <footer className="relative z-10 border-t border-silver/10 py-10 px-6">
+    <footer className="relative z-10 bg-bg-dark py-10 px-6">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-6">
         {/* Nav links */}
         <div className="flex flex-wrap items-center justify-center gap-6">
@@ -17,7 +16,7 @@ export default function Footer() {
             <Link
               key={link.label}
               href={link.href}
-              className="text-xs text-text-muted transition-colors hover:text-text-primary uppercase tracking-wider"
+              className="text-xs text-white/60 transition-colors hover:text-white uppercase tracking-wider"
             >
               {link.label}
             </Link>
@@ -26,7 +25,7 @@ export default function Footer() {
 
         {/* Social + copyright */}
         <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between sm:w-full">
-          <span className="font-heading text-xs tracking-[0.3em] text-text-muted uppercase">
+          <span className="font-heading text-xs font-semibold tracking-wide text-white/60">
             Bartlett Labs
           </span>
 
@@ -34,7 +33,7 @@ export default function Footer() {
             href="https://www.linkedin.com/company/bartlett-labs"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-text-muted transition-colors hover:text-accent-light focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent-blue/50 rounded-sm"
+            className="text-white/60 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent-blue/50 rounded-sm"
             aria-label="LinkedIn"
           >
             <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
@@ -42,7 +41,7 @@ export default function Footer() {
             </svg>
           </a>
 
-          <span className="text-xs text-text-muted">
+          <span className="text-xs text-white/40">
             &copy; {new Date().getFullYear()} Bartlett Labs LLC. All rights
             reserved.
           </span>

@@ -41,10 +41,10 @@ export default function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="glass-card rounded-xl p-8 text-center">
-        <div className="mb-4 text-3xl">&#10003;</div>
-        <h3 className="font-heading text-lg tracking-wider text-text-primary">
-          MESSAGE SENT
+      <div className="card p-8 text-center">
+        <div className="mb-4 text-3xl text-accent-green">&#10003;</div>
+        <h3 className="font-heading text-lg font-semibold text-navy">
+          Message Sent
         </h3>
         <p className="mt-3 text-silver">
           Thanks for reaching out. We&apos;ll reply within 24 hours.
@@ -61,7 +61,7 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="glass-card rounded-xl p-8 space-y-5">
+    <form onSubmit={handleSubmit} className="card p-8 space-y-5">
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="name" className="mb-1.5 block text-sm text-silver">
@@ -72,7 +72,7 @@ export default function ContactForm() {
             id="name"
             name="name"
             required
-            className="w-full rounded-lg border border-silver/15 bg-bg-primary/60 px-4 py-2.5 text-text-primary placeholder-text-muted outline-none transition-colors focus:border-accent-blue/60"
+            className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-navy placeholder-text-muted outline-none transition-colors focus:border-accent-blue"
             placeholder="Your name"
           />
         </div>
@@ -84,7 +84,7 @@ export default function ContactForm() {
             type="text"
             id="business"
             name="business"
-            className="w-full rounded-lg border border-silver/15 bg-bg-primary/60 px-4 py-2.5 text-text-primary placeholder-text-muted outline-none transition-colors focus:border-accent-blue/60"
+            className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-navy placeholder-text-muted outline-none transition-colors focus:border-accent-blue"
             placeholder="Your company"
           />
         </div>
@@ -100,7 +100,7 @@ export default function ContactForm() {
             id="email"
             name="email"
             required
-            className="w-full rounded-lg border border-silver/15 bg-bg-primary/60 px-4 py-2.5 text-text-primary placeholder-text-muted outline-none transition-colors focus:border-accent-blue/60"
+            className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-navy placeholder-text-muted outline-none transition-colors focus:border-accent-blue"
             placeholder="you@company.com"
           />
         </div>
@@ -112,7 +112,7 @@ export default function ContactForm() {
             type="tel"
             id="phone"
             name="phone"
-            className="w-full rounded-lg border border-silver/15 bg-bg-primary/60 px-4 py-2.5 text-text-primary placeholder-text-muted outline-none transition-colors focus:border-accent-blue/60"
+            className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-navy placeholder-text-muted outline-none transition-colors focus:border-accent-blue"
             placeholder="(555) 123-4567"
           />
         </div>
@@ -127,13 +127,13 @@ export default function ContactForm() {
           name="message"
           required
           rows={4}
-          className="w-full rounded-lg border border-silver/15 bg-bg-primary/60 px-4 py-2.5 text-text-primary placeholder-text-muted outline-none transition-colors focus:border-accent-blue/60 resize-y"
+          className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-navy placeholder-text-muted outline-none transition-colors focus:border-accent-blue resize-y"
           placeholder="Tell us about your workflow, pain points, or what you'd like to build..."
         />
       </div>
 
       {status === "error" && (
-        <p className="text-sm text-red-400">{errorMessage}</p>
+        <p className="text-sm text-red-600">{errorMessage}</p>
       )}
 
       <button

@@ -1,13 +1,7 @@
 import type { Metadata } from "next";
-import { Cinzel, Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
-
-const cinzel = Cinzel({
-  subsets: ["latin"],
-  variable: "--font-cinzel",
-  display: "swap",
-});
 
 const inter = Inter({
   subsets: ["latin"],
@@ -16,14 +10,14 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Bartlett Labs | AI Automation for Houston Businesses",
+  title: "Bartlett Labs | AI Automation & Business Systems | Houston, TX",
   description:
-    "Websites, chatbots, and internal workflow automation for Houston small businesses. Book a 15-minute call.",
+    "Custom AI assistants and automation workflows that handle your leads, scheduling, and data entry. Get your time back and scale without adding headcount. Houston, TX.",
   metadataBase: new URL("https://bartlettlabs.io"),
   openGraph: {
-    title: "Bartlett Labs | AI Automation for Houston Businesses",
+    title: "Bartlett Labs | AI Automation & Business Systems | Houston, TX",
     description:
-      "Websites, chatbots, and internal workflow automation for Houston small businesses.",
+      "Custom AI assistants and automation workflows that handle your leads, scheduling, and data entry. Houston, TX.",
     url: "https://bartlettlabs.io",
     siteName: "Bartlett Labs",
     type: "website",
@@ -32,15 +26,15 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Bartlett Labs — AI Automation for Houston Businesses",
+        alt: "Bartlett Labs — AI Automation & Business Systems",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Bartlett Labs | AI Automation for Houston Businesses",
+    title: "Bartlett Labs | AI Automation & Business Systems | Houston, TX",
     description:
-      "Websites, chatbots, and internal workflow automation for Houston small businesses.",
+      "Custom AI assistants and automation workflows that handle your leads, scheduling, and data entry. Houston, TX.",
     images: ["/og-image.png"],
   },
 };
@@ -51,21 +45,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${cinzel.variable} ${inter.variable}`}>
+    <html lang="en" className={inter.variable}>
       <head>
         <link
           href="https://assets.calendly.com/assets/external/widget.css"
           rel="stylesheet"
         />
       </head>
-      <body className="antialiased">
-        {/* Ambient mist background */}
-        <div className="mist-container" aria-hidden="true">
-          <div className="mist-orb mist-orb-1" />
-          <div className="mist-orb mist-orb-2" />
-          <div className="mist-orb mist-orb-3" />
-        </div>
-
+      <body className="bg-bg-primary text-text-primary font-body antialiased">
         {children}
 
         <Script

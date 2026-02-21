@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import CalendlyButton from "@/components/CalendlyButton";
 
 export const metadata: Metadata = {
-  title: "Services | Bartlett Labs",
+  title: "Services | Bartlett Labs — AI Automation & Business Systems | Houston, TX",
   description:
     "Websites, AI assistants, and internal automation sprints for Houston small businesses. Fixed-scope quotes in 24 hours.",
 };
@@ -72,10 +72,10 @@ export default function ServicesPage() {
         <div className="mx-auto max-w-4xl">
           {/* Page header */}
           <div className="fade-in-section mb-20 text-center">
-            <h1 className="font-heading text-3xl tracking-[0.2em] text-text-primary sm:text-4xl">
-              SERVICES
+            <h1 className="font-heading text-3xl font-bold tracking-tight text-navy sm:text-4xl">
+              Services
             </h1>
-            <div className="section-divider mx-auto mt-6 w-24" />
+            <div className="section-divider mx-auto mt-4 w-16" />
             <p className="mt-6 text-lg text-silver">
               Fixed-scope quotes in 24 hours. No hourly billing, no surprises.
             </p>
@@ -85,7 +85,7 @@ export default function ServicesPage() {
           <div className="space-y-20">
             {services.map((s) => (
               <div key={s.title} className="fade-in-section">
-                <h2 className="font-heading text-xl tracking-wider text-text-primary sm:text-2xl">
+                <h2 className="font-heading text-xl font-bold tracking-tight text-navy sm:text-2xl">
                   {s.title}
                 </h2>
                 <p className="mt-4 text-base leading-relaxed text-silver">
@@ -93,18 +93,18 @@ export default function ServicesPage() {
                 </p>
 
                 <div className="mt-8 grid gap-6 sm:grid-cols-2">
-                  <div className="glass-card rounded-xl p-6">
-                    <h3 className="text-xs font-bold uppercase tracking-widest text-accent-light">
+                  <div className="card p-6">
+                    <h3 className="text-xs font-bold uppercase tracking-widest text-accent-blue">
                       Who it&apos;s for
                     </h3>
                     <p className="mt-2 text-sm text-silver">{s.whoItsFor}</p>
                   </div>
-                  <div className="glass-card rounded-xl p-6">
-                    <h3 className="text-xs font-bold uppercase tracking-widest text-accent-light">
+                  <div className="card p-6">
+                    <h3 className="text-xs font-bold uppercase tracking-widest text-accent-blue">
                       Timeline
                     </h3>
                     <p className="mt-2 text-sm text-silver">{s.timeline}</p>
-                    <h3 className="mt-4 text-xs font-bold uppercase tracking-widest text-accent-light">
+                    <h3 className="mt-4 text-xs font-bold uppercase tracking-widest text-accent-blue">
                       What you provide
                     </h3>
                     <p className="mt-2 text-sm text-silver">
@@ -113,8 +113,8 @@ export default function ServicesPage() {
                   </div>
                 </div>
 
-                <div className="mt-6 glass-card rounded-xl p-6">
-                  <h3 className="text-xs font-bold uppercase tracking-widest text-accent-light">
+                <div className="mt-6 card p-6">
+                  <h3 className="text-xs font-bold uppercase tracking-widest text-accent-blue">
                     Deliverables
                   </h3>
                   <ul className="mt-3 space-y-2 text-sm text-silver">
