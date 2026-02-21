@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CalendlyButton from "@/components/CalendlyButton";
@@ -43,18 +44,17 @@ export default function AboutPage() {
 
           {/* Photo + Mission */}
           <div className="fade-in-section mb-16 grid gap-10 sm:grid-cols-3 items-start">
-            {/* Headshot placeholder */}
+            {/* Headshot */}
             <div className="sm:col-span-1">
-              <div className="flex items-center justify-center rounded-xl bg-bg-secondary border border-border aspect-square">
-                <div className="text-center p-4">
-                  <div className="h-16 w-16 mx-auto rounded-full bg-border/60 mb-2 flex items-center justify-center">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-7 w-7 text-silver">
-                      <path d="M12 2a4 4 0 0 1 4 4v2a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4Z" />
-                      <path d="M16 14H8a4 4 0 0 0-4 4v2h16v-2a4 4 0 0 0-4-4Z" />
-                    </svg>
-                  </div>
-                  <p className="text-xs text-text-muted italic">Photo coming soon</p>
-                </div>
+              <div className="rounded-xl overflow-hidden aspect-square">
+                <Image
+                  src="/kyle-bartlett.png"
+                  alt="Kyle Bartlett — Founder of Bartlett Labs"
+                  width={400}
+                  height={400}
+                  className="h-full w-full object-cover object-top"
+                  sizes="(max-width: 640px) 100vw, 33vw"
+                />
               </div>
             </div>
 

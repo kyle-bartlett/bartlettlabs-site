@@ -1,3 +1,4 @@
+import Image from "next/image";
 import CalendlyButton from "./CalendlyButton";
 
 export default function Hero() {
@@ -61,20 +62,17 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right column — founder photo placeholder */}
+          {/* Right column — founder photo */}
           <div className="lg:col-span-5 flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-md aspect-[4/5] rounded-xl bg-bg-secondary border border-border overflow-hidden">
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
-                <div className="h-24 w-24 rounded-full bg-border/60 mb-4 flex items-center justify-center">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-10 w-10 text-silver">
-                    <path d="M12 2a4 4 0 0 1 4 4v2a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4Z" />
-                    <path d="M16 14H8a4 4 0 0 0-4 4v2h16v-2a4 4 0 0 0-4-4Z" />
-                  </svg>
-                </div>
-                <p className="label-mono text-text-muted mb-1">Kyle Bartlett</p>
-                <p className="text-xs text-text-muted">Founder &middot; Houston, TX</p>
-                <p className="text-xs text-text-muted/60 mt-2 italic">Photo coming soon</p>
-              </div>
+            <div className="relative w-full max-w-md aspect-[4/5] rounded-xl overflow-hidden">
+              <Image
+                src="/kyle-bartlett.png"
+                alt="Kyle Bartlett — Founder of Bartlett Labs"
+                fill
+                className="object-cover object-top"
+                priority
+                sizes="(max-width: 768px) 100vw, 400px"
+              />
             </div>
           </div>
         </div>

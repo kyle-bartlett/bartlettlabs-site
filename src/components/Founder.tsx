@@ -1,3 +1,4 @@
+import Image from "next/image";
 import CalendlyButton from "./CalendlyButton";
 
 export default function Founder() {
@@ -5,18 +6,17 @@ export default function Founder() {
     <section className="relative py-20 px-6">
       <div className="container-bl">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-16 items-start">
-          {/* Photo placeholder */}
+          {/* Photo */}
           <div className="lg:col-span-4 fade-in-section">
-            <div className="aspect-square w-full max-w-xs mx-auto lg:mx-0 rounded-xl bg-bg-secondary border border-border overflow-hidden flex items-center justify-center">
-              <div className="text-center p-6">
-                <div className="h-20 w-20 mx-auto rounded-full bg-border/60 mb-3 flex items-center justify-center">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-8 w-8 text-silver">
-                    <path d="M12 2a4 4 0 0 1 4 4v2a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4Z" />
-                    <path d="M16 14H8a4 4 0 0 0-4 4v2h16v-2a4 4 0 0 0-4-4Z" />
-                  </svg>
-                </div>
-                <p className="text-xs text-text-muted italic">Photo coming soon</p>
-              </div>
+            <div className="aspect-square w-full max-w-xs mx-auto lg:mx-0 rounded-xl overflow-hidden">
+              <Image
+                src="/kyle-bartlett.png"
+                alt="Kyle Bartlett — Founder of Bartlett Labs"
+                width={400}
+                height={400}
+                className="h-full w-full object-cover object-top"
+                sizes="(max-width: 768px) 280px, 320px"
+              />
             </div>
           </div>
 
