@@ -223,6 +223,268 @@ body {
   }
 }
 
+/* -- Hero visual (animated system builder) ---------------- */
+
+.hero-visual-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* Dashed orbit rings */
+.hero-orbit {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  animation: hero-spin 60s linear infinite;
+}
+
+.hero-orbit circle {
+  fill: none;
+  stroke: var(--color-border);
+  stroke-width: 1;
+  stroke-dasharray: 6 6;
+}
+
+/* Connector lines */
+.hero-connectors {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-connectors line {
+  stroke: var(--color-border);
+  stroke-width: 1;
+  stroke-dasharray: 4 4;
+  animation: hero-dash 8s linear infinite;
+}
+
+/* Nodes (labeled boxes) */
+.hero-node {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg-white);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  z-index: 2;
+}
+
+.hero-node span {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-navy);
+}
+
+/* Central hub — larger, accent */
+.hero-node-center {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--color-accent-blue);
+  border-color: var(--color-accent-blue);
+  box-shadow: 0 0 24px rgba(37, 99, 235, 0.3);
+}
+
+.hero-node-center span {
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+/* Individual node positions + float animations */
+.hero-node-1 {
+  width: 56px;
+  height: 36px;
+  top: 12%;
+  left: 18%;
+  animation: hero-float-1 6s ease-in-out infinite;
+}
+
+.hero-node-2 {
+  width: 48px;
+  height: 36px;
+  top: 8%;
+  right: 18%;
+  animation: hero-float-2 7s ease-in-out infinite;
+}
+
+.hero-node-3 {
+  width: 56px;
+  height: 36px;
+  bottom: 20%;
+  right: 10%;
+  animation: hero-float-3 5.5s ease-in-out infinite;
+  background-color: var(--color-bg-secondary);
+}
+
+.hero-node-4 {
+  width: 60px;
+  height: 36px;
+  bottom: 18%;
+  left: 8%;
+  animation: hero-float-4 6.5s ease-in-out infinite;
+}
+
+.hero-node-5 {
+  width: 52px;
+  height: 36px;
+  top: 38%;
+  right: 4%;
+  animation: hero-float-5 5s ease-in-out infinite;
+  border-color: var(--color-accent-green);
+}
+
+.hero-node-6 {
+  width: 72px;
+  height: 36px;
+  bottom: 6%;
+  left: 28%;
+  animation: hero-float-6 7.5s ease-in-out infinite;
+}
+
+/* Small floating dots (connection points) */
+.hero-dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-accent-blue);
+  opacity: 0.5;
+  z-index: 1;
+}
+
+.hero-dot-1 { top: 30%; left: 35%; animation: hero-pulse 3s ease-in-out infinite; }
+.hero-dot-2 { top: 25%; right: 30%; animation: hero-pulse 4s ease-in-out 0.5s infinite; }
+.hero-dot-3 { bottom: 35%; right: 25%; animation: hero-pulse 3.5s ease-in-out 1s infinite; }
+.hero-dot-4 { bottom: 30%; left: 30%; animation: hero-pulse 4.5s ease-in-out 0.3s infinite; }
+.hero-dot-5 { top: 48%; left: 15%; animation: hero-pulse 3s ease-in-out 1.5s infinite; background-color: var(--color-accent-green); }
+.hero-dot-6 { top: 20%; left: 50%; animation: hero-pulse 5s ease-in-out 0.8s infinite; }
+.hero-dot-7 { bottom: 40%; right: 40%; animation: hero-pulse 3.5s ease-in-out 2s infinite; background-color: var(--color-accent-green); }
+.hero-dot-8 { bottom: 12%; right: 35%; animation: hero-pulse 4s ease-in-out 1.2s infinite; }
+
+/* Floating geometric shapes (decorative) */
+.hero-shape {
+  position: absolute;
+  border: 1px solid var(--color-border);
+  opacity: 0.4;
+  z-index: 0;
+}
+
+.hero-shape-sq-1 {
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  top: 15%;
+  left: 48%;
+  animation: hero-float-shape 8s ease-in-out infinite;
+  transform: rotate(15deg);
+}
+
+.hero-shape-sq-2 {
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  bottom: 32%;
+  left: 12%;
+  animation: hero-float-shape 6s ease-in-out 1s infinite;
+  transform: rotate(-10deg);
+}
+
+.hero-shape-sq-3 {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  top: 55%;
+  right: 15%;
+  animation: hero-float-shape 9s ease-in-out 2s infinite;
+  transform: rotate(25deg);
+  border-color: var(--color-accent-blue);
+  opacity: 0.25;
+}
+
+.hero-shape-circle-1 {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  top: 60%;
+  left: 22%;
+  animation: hero-float-shape 7s ease-in-out 0.5s infinite;
+  border-color: var(--color-accent-green);
+  opacity: 0.3;
+}
+
+.hero-shape-circle-2 {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  top: 32%;
+  right: 12%;
+  animation: hero-float-shape 5.5s ease-in-out 1.5s infinite;
+}
+
+/* Keyframes */
+@keyframes hero-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes hero-dash {
+  to { stroke-dashoffset: -40; }
+}
+
+@keyframes hero-pulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.8); }
+}
+
+@keyframes hero-float-1 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(8px, -12px); }
+}
+
+@keyframes hero-float-2 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-10px, 8px); }
+}
+
+@keyframes hero-float-3 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-6px, -10px); }
+}
+
+@keyframes hero-float-4 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(10px, 6px); }
+}
+
+@keyframes hero-float-5 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-8px, -8px); }
+}
+
+@keyframes hero-float-6 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(6px, -6px); }
+}
+
+@keyframes hero-float-shape {
+  0%, 100% { transform: translateY(0) rotate(var(--tw-rotate, 0deg)); opacity: 0.4; }
+  50% { transform: translateY(-10px) rotate(var(--tw-rotate, 0deg)); opacity: 0.6; }
+}
+
 /* -- Reduced motion --------------------------------------- */
 
 @media (prefers-reduced-motion: reduce) {
@@ -238,5 +500,22 @@ body {
   .btn-green,
   .btn-ghost {
     transition: none;
+  }
+
+  .hero-orbit,
+  .hero-connectors line,
+  .hero-node-1, .hero-node-2, .hero-node-3,
+  .hero-node-4, .hero-node-5, .hero-node-6,
+  .hero-dot,
+  .hero-shape {
+    animation: none;
+  }
+
+  .hero-dot {
+    opacity: 0.5;
+  }
+
+  .hero-shape {
+    opacity: 0.4;
   }
 }

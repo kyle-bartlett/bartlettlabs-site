@@ -1,5 +1,5 @@
-import Image from "next/image";
 import CalendlyButton from "./CalendlyButton";
+import HeroVisual from "./HeroVisual";
 
 export default function Hero() {
   return (
@@ -62,18 +62,9 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right column — founder photo */}
+          {/* Right column — animated system visual */}
           <div className="lg:col-span-5 flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-md aspect-[4/5] rounded-xl overflow-hidden">
-              <Image
-                src="/kyle-bartlett.png"
-                alt="Kyle Bartlett — Founder of Bartlett Labs"
-                fill
-                className="object-cover object-top"
-                priority
-                sizes="(max-width: 768px) 100vw, 400px"
-              />
-            </div>
+            <HeroVisual />
           </div>
         </div>
       </div>
