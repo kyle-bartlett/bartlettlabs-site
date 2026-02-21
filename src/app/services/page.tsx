@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 
 const services = [
   {
+    id: "lead-capture",
     title: "Website + Lead Capture System",
     description:
       "A modern, mobile-first website with built-in forms, analytics tracking, and automated email follow-up sequences. Designed to convert visitors into leads without manual effort.",
@@ -24,11 +25,12 @@ const services = [
       "Automated email follow-up sequences",
       "SEO fundamentals (meta tags, sitemap, speed)",
     ],
-    timeline: "1\u20132 weeks",
+    timeline: "1 week",
     clientProvides:
       "Logo, brand colors, copy direction (or we draft it), and access to your domain registrar.",
   },
   {
+    id: "ai-assistant",
     title: "AI Assistant (Chat + SMS + Call)",
     description:
       "A custom-trained AI assistant that answers FAQs, qualifies leads, and books appointments\u2014deployed across your website, SMS, and phone. Available 24/7 without adding headcount.",
@@ -41,11 +43,12 @@ const services = [
       "Dashboard with conversation analytics",
       "Escalation rules for human handoff",
     ],
-    timeline: "2\u20133 weeks",
+    timeline: "1 week",
     clientProvides:
       "FAQ document or knowledge base, desired tone/personality, and phone number (if applicable).",
   },
   {
+    id: "automation",
     title: "Internal Automation Sprint",
     description:
       "We audit your internal workflows and automate the repetitive parts\u2014reporting, scheduling, data syncing, notifications\u2014so your team focuses on high-value work instead of manual tasks.",
@@ -58,7 +61,7 @@ const services = [
       "Training session and documentation",
       "30-day post-launch support",
     ],
-    timeline: "1\u20132 weeks",
+    timeline: "1 week",
     clientProvides:
       "Access to the tools/platforms you currently use and a walkthrough of your existing workflows.",
   },
@@ -84,7 +87,7 @@ export default function ServicesPage() {
           {/* Service sections */}
           <div className="space-y-20">
             {services.map((s) => (
-              <div key={s.title} className="fade-in-section">
+              <div key={s.title} id={s.id} className="fade-in-section scroll-mt-24">
                 <h2 className="font-heading text-xl font-bold tracking-tight text-navy sm:text-2xl">
                   {s.title}
                 </h2>
