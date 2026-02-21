@@ -19,7 +19,7 @@ const steps = [
 export default function Process() {
   return (
     <section className="relative z-10 py-24 px-6">
-      <div className="mx-auto max-w-4xl">
+      <div className="mx-auto max-w-2xl">
         <div className="fade-in-section mb-16 text-center">
           <h2 className="font-heading text-2xl font-bold tracking-tight text-navy sm:text-3xl">
             Your 10-Day Sprint
@@ -27,22 +27,26 @@ export default function Process() {
           <div className="section-divider mx-auto mt-4 w-16" />
         </div>
 
-        {/* Timeline */}
+        {/* Vertical timeline */}
         <div className="fade-in-section relative">
-          {/* Connecting line (desktop) */}
-          <div className="hidden sm:block absolute top-8 left-0 right-0 h-0.5 bg-gray-200" />
+          {/* Vertical thread */}
+          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gray-200 sm:left-10" />
 
-          <div className="grid gap-8 sm:grid-cols-3">
+          <div className="space-y-12">
             {steps.map((step, i) => (
-              <div key={step.title} className="relative text-center">
-                {/* Day marker */}
-                <div className="relative z-10 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent-blue text-white text-xs font-bold">
+              <div key={step.title} className="relative flex gap-6 sm:gap-8">
+                {/* Day marker on the thread */}
+                <div className="relative z-10 flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-accent-blue text-white text-xs font-bold shadow-md sm:h-20 sm:w-20 sm:text-sm">
                   {step.days}
                 </div>
-                <h3 className="font-heading text-base font-semibold text-navy">
-                  {step.title}
-                </h3>
-                <p className="mt-2 text-sm text-silver">{step.description}</p>
+
+                {/* Content */}
+                <div className="pt-2 sm:pt-4">
+                  <h3 className="font-heading text-base font-semibold text-navy sm:text-lg">
+                    {step.title}
+                  </h3>
+                  <p className="mt-1 text-sm text-silver">{step.description}</p>
+                </div>
               </div>
             ))}
           </div>

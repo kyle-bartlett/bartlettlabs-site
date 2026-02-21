@@ -15,7 +15,7 @@ const rows = [
 
 export default function ProblemSolution() {
   return (
-    <section className="relative z-10 py-24 px-6">
+    <section className="relative z-10 bg-white py-24 px-6">
       <div className="mx-auto max-w-4xl">
         <div className="fade-in-section mb-12 text-center">
           <h2 className="font-heading text-2xl font-bold tracking-tight text-navy sm:text-3xl">
@@ -24,27 +24,34 @@ export default function ProblemSolution() {
           <div className="section-divider mx-auto mt-4 w-16" />
         </div>
 
-        <div className="fade-in-section grid gap-4 sm:grid-cols-2">
+        {/* Table with drop shadow */}
+        <div className="fade-in-section overflow-hidden rounded-xl bg-white shadow-lg">
           {/* Column headers */}
-          <div className="hidden sm:block rounded-lg bg-red-50 px-6 py-3">
-            <span className="text-xs font-bold uppercase tracking-widest text-red-600">
-              The Problem
-            </span>
-          </div>
-          <div className="hidden sm:block rounded-lg bg-green-50 px-6 py-3">
-            <span className="text-xs font-bold uppercase tracking-widest text-green-700">
-              The Solution
-            </span>
+          <div className="hidden sm:grid sm:grid-cols-2">
+            <div className="bg-red-50 px-6 py-3 border-b border-red-100">
+              <span className="text-xs font-bold uppercase tracking-widest text-red-600">
+                The Problem
+              </span>
+            </div>
+            <div className="bg-green-50 px-6 py-3 border-b border-green-100">
+              <span className="text-xs font-bold uppercase tracking-widest text-green-700">
+                The Solution
+              </span>
+            </div>
           </div>
 
           {/* Rows */}
-          {rows.map((row) => (
-            <div key={row.problem} className="contents">
-              <div className="flex items-center gap-3 rounded-lg bg-red-50 px-6 py-4">
+          {rows.map((row, i) => (
+            <div key={row.problem} className="grid sm:grid-cols-2">
+              <div
+                className={`flex items-center gap-3 px-6 py-5 ${
+                  i < rows.length - 1 ? "border-b border-red-100" : ""
+                } bg-red-50/50`}
+              >
                 <svg
                   viewBox="0 0 20 20"
                   fill="currentColor"
-                  className="h-5 w-5 shrink-0 text-red-400"
+                  className="h-5 w-5 shrink-0 text-red-500"
                 >
                   <path
                     fillRule="evenodd"
@@ -56,11 +63,15 @@ export default function ProblemSolution() {
                   {row.problem}
                 </span>
               </div>
-              <div className="flex items-center gap-3 rounded-lg bg-green-50 px-6 py-4">
+              <div
+                className={`flex items-center gap-3 px-6 py-5 ${
+                  i < rows.length - 1 ? "border-b border-green-100" : ""
+                } bg-green-50/50`}
+              >
                 <svg
                   viewBox="0 0 20 20"
                   fill="currentColor"
-                  className="h-5 w-5 shrink-0 text-green-500"
+                  className="h-5 w-5 shrink-0 text-green-600"
                 >
                   <path
                     fillRule="evenodd"
