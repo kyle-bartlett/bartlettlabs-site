@@ -1,17 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg-primary: #F3F4F6;
-  --color-bg-secondary: #FFFFFF;
+  --color-bg-primary: #F7F8F6;
+  --color-bg-secondary: #ECEEE9;
+  --color-bg-white: #FFFFFF;
   --color-accent-blue: #2563EB;
   --color-accent-green: #16A34A;
   --color-accent-light: #3B82F6;
-  --color-navy: #1A202C;
-  --color-hero-bg: #0B1120;
-  --color-silver: #64748B;
-  --color-text-primary: #1A202C;
-  --color-text-muted: #94A3B8;
-  --color-bg-dark: #0B1120;
+  --color-navy: #1A1A1A;
+  --color-silver: #6B7280;
+  --color-text-primary: #1A1A1A;
+  --color-text-muted: #9CA3AF;
+  --color-bg-dark: #111111;
+  --color-border: #D4D4D4;
 
   --font-heading: var(--font-inter), "Inter", sans-serif;
   --font-body: var(--font-inter), "Inter", sans-serif;
@@ -34,185 +35,180 @@ body {
 }
 
 ::selection {
-  background-color: color-mix(in srgb, var(--color-accent-blue) 30%, transparent);
-  color: white;
+  background-color: color-mix(in srgb, var(--color-accent-blue) 25%, transparent);
+  color: var(--color-navy);
+}
+
+/* -- Container (Baseten-style max-width) ------------------ */
+
+.container-bl {
+  width: 100%;
+  max-width: 1296px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* -- Dashed border (Baseten-style separators) ------------- */
+
+.border-dashed-b {
+  border-bottom: 1px dashed var(--color-border);
+}
+
+.border-dashed-t {
+  border-top: 1px dashed var(--color-border);
+}
+
+/* -- Mono uppercase label (Baseten-style tags) ------------ */
+
+.label-mono {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
 }
 
 /* -- Card ------------------------------------------------- */
 
 .card {
-  background-color: var(--color-bg-secondary);
+  background-color: var(--color-bg-white);
   border-radius: 0.75rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
-  border: 1px solid #E5E7EB;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid var(--color-border);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.06);
+  background-color: var(--color-bg-secondary);
+  border-color: #B0B0B0;
 }
 
-/* -- Hero section (dark) ---------------------------------- */
-
-.hero-dark {
-  background-color: var(--color-hero-bg);
-}
-
-/* -- Subtle logo glow ------------------------------------- */
-
-.logo-glow-subtle {
-  filter: drop-shadow(0 0 24px rgba(59, 130, 246, 0.20));
-}
-
-/* -- Header ----------------------------------------------- */
-
-.header-solid {
-  background-color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(8px);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
-}
-
-/* Header on dark hero — transparent with light text */
-.header-dark {
-  background-color: rgba(11, 17, 32, 0.60);
-  backdrop-filter: blur(8px);
-}
-
-/* -- Section accent (dark navy band) ---------------------- */
+/* -- Section accent (dark band) --------------------------- */
 
 .section-accent {
   background-color: var(--color-bg-dark);
   color: #ffffff;
 }
 
-/* -- Buttons ---------------------------------------------- */
+/* -- Buttons (Baseten-inspired) --------------------------- */
 
+/* Solid dark button */
 .btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.75rem;
-  border-radius: 0.5rem;
-  font-family: var(--font-body);
-  font-size: 0.875rem;
-  font-weight: 600;
-  letter-spacing: 0.025em;
-  color: white;
-  background-color: var(--color-accent-blue);
-  border: 1px solid var(--color-accent-blue);
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-bg-primary);
+  background-color: var(--color-navy);
+  border: 1px solid var(--color-navy);
   cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.24s ease, background-color 0.24s ease, border-color 0.24s ease;
 }
 
 .btn-primary:hover {
-  background-color: #1d4ed8;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+  background-color: var(--color-accent-blue);
+  border-color: var(--color-accent-blue);
+  color: white;
 }
 
+/* Outline button */
 .btn-secondary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.75rem;
-  border-radius: 0.5rem;
-  font-family: var(--font-body);
-  font-size: 0.875rem;
-  font-weight: 600;
-  letter-spacing: 0.025em;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
   color: var(--color-navy);
   background-color: transparent;
-  border: 1px solid #cbd5e1;
+  border: 1px solid var(--color-border);
   cursor: pointer;
-  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  transition: background-color 0.24s ease, border-color 0.24s ease;
 }
 
 .btn-secondary:hover {
-  background-color: #f1f5f9;
+  background-color: var(--color-bg-secondary);
   border-color: var(--color-navy);
-  transform: translateY(-1px);
 }
 
-/* Ghost button — white border on dark backgrounds */
-.btn-ghost {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.75rem;
-  border-radius: 0.5rem;
-  font-family: var(--font-body);
-  font-size: 0.875rem;
-  font-weight: 600;
-  letter-spacing: 0.025em;
-  color: white;
-  background-color: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  cursor: pointer;
-  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
-}
-
-.btn-ghost:hover {
-  background-color: var(--color-accent-blue);
-  border-color: var(--color-accent-blue);
-  transform: translateY(-1px);
-}
-
+/* Green accent button */
 .btn-green {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.75rem;
-  border-radius: 0.5rem;
-  font-family: var(--font-body);
-  font-size: 0.875rem;
-  font-weight: 600;
-  letter-spacing: 0.025em;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
   color: white;
   background-color: var(--color-accent-green);
   border: 1px solid var(--color-accent-green);
   cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  transition: background-color 0.24s ease;
 }
 
 .btn-green:hover {
   background-color: #15803d;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
 }
 
-/* Focus-visible for all interactive elements */
+/* Ghost button for dark backgrounds */
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: white;
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: background-color 0.24s ease, border-color 0.24s ease;
+}
+
+.btn-ghost:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: white;
+}
+
+/* Focus-visible */
 .btn-primary:focus-visible,
 .btn-secondary:focus-visible,
-.btn-ghost:focus-visible,
-.btn-green:focus-visible {
+.btn-green:focus-visible,
+.btn-ghost:focus-visible {
   outline: 2px solid var(--color-accent-blue);
   outline-offset: 2px;
-}
-
-/* -- Section divider -------------------------------------- */
-
-.section-divider {
-  height: 2px;
-  background-color: var(--color-accent-blue);
-  border-radius: 1px;
 }
 
 /* -- Scroll-driven fade-in -------------------------------- */
 
 .fade-in-section {
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateY(24px);
   animation: fade-in-up 0.6s ease-out forwards;
   animation-timeline: view();
   animation-range: entry 0% entry 30%;
 }
 
-/* Fallback for browsers without scroll-driven animations */
 @supports not (animation-timeline: view()) {
   .fade-in-section {
     opacity: 1;
@@ -239,8 +235,8 @@ body {
   .card,
   .btn-primary,
   .btn-secondary,
-  .btn-ghost,
-  .btn-green {
+  .btn-green,
+  .btn-ghost {
     transition: none;
   }
 }

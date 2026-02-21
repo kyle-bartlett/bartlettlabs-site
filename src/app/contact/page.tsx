@@ -14,35 +14,42 @@ export default function ContactPage() {
   return (
     <>
       <Header />
-      <main className="relative z-10 pt-32 pb-16 px-6">
-        <div className="mx-auto max-w-2xl">
+      <main className="relative pt-16 pb-16 px-6">
+        <div className="container-bl max-w-2xl">
           {/* Page header */}
-          <div className="fade-in-section mb-12 text-center">
+          <div className="fade-in-section mb-12 pt-8">
+            <p className="label-mono text-accent-blue mb-3">Contact</p>
             <h1 className="font-heading text-3xl font-bold tracking-tight text-navy sm:text-4xl">
-              Contact
+              Let&rsquo;s talk.
             </h1>
-            <div className="section-divider mx-auto mt-4 w-16" />
           </div>
 
           {/* Booking CTA */}
-          <div className="fade-in-section mb-12 text-center">
-            <p className="text-lg text-silver">
+          <div className="fade-in-section mb-12">
+            <p className="text-lg text-silver mb-6">
               The fastest way to get started is a quick call.
             </p>
-            <div className="mt-6">
-              <CalendlyButton className="btn-green">
-                Book a 15-Min Efficiency Audit
-              </CalendlyButton>
-            </div>
+            <CalendlyButton className="btn-primary">
+              Book a 15-Min Efficiency Audit
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="h-4 w-4"
+              >
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </CalendlyButton>
           </div>
 
           {/* Divider */}
           <div className="fade-in-section mb-12 flex items-center gap-4">
-            <div className="flex-1 h-px bg-gray-200" />
-            <span className="text-xs text-text-muted uppercase tracking-widest">
-              or send a message
-            </span>
-            <div className="flex-1 h-px bg-gray-200" />
+            <div className="flex-1 border-dashed-b" />
+            <span className="label-mono text-text-muted">or send a message</span>
+            <div className="flex-1 border-dashed-b" />
           </div>
 
           {/* Form */}
@@ -51,14 +58,14 @@ export default function ContactPage() {
           </div>
 
           {/* Footer info */}
-          <div className="fade-in-section text-center space-y-2">
+          <div className="fade-in-section space-y-2">
             <p className="text-sm text-silver">
-              <strong className="text-navy">Response time:</strong>{" "}
-              Within 24 hours
+              <strong className="text-navy">Response time:</strong> Within 24
+              hours
             </p>
             <p className="text-sm text-silver">
-              <strong className="text-navy">Location:</strong> Houston,
-              TX (remote-friendly)
+              <strong className="text-navy">Location:</strong> Houston, TX
+              (remote-friendly)
             </p>
             <p className="text-sm text-silver">
               <strong className="text-navy">Email:</strong>{" "}

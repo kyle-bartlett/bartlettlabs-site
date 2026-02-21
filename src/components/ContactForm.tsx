@@ -41,18 +41,18 @@ export default function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="card p-8 text-center">
+      <div className="card p-8">
         <div className="mb-4 text-3xl text-accent-green">&#10003;</div>
         <h3 className="font-heading text-lg font-semibold text-navy">
           Message Sent
         </h3>
-        <p className="mt-3 text-silver">
+        <p className="mt-3 text-silver text-sm">
           Thanks for reaching out. We&apos;ll reply within 24 hours.
         </p>
         <button
           type="button"
           onClick={() => setStatus("idle")}
-          className="btn-secondary mt-6"
+          className="btn-secondary mt-6 text-xs"
         >
           Send Another
         </button>
@@ -72,7 +72,7 @@ export default function ContactForm() {
             id="name"
             name="name"
             required
-            className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-navy placeholder-text-muted outline-none transition-colors focus:border-accent-blue"
+            className="w-full rounded-lg border border-border bg-bg-white px-4 py-2.5 text-navy placeholder-text-muted outline-none transition-colors focus:border-accent-blue"
             placeholder="Your name"
           />
         </div>
@@ -84,7 +84,7 @@ export default function ContactForm() {
             type="text"
             id="business"
             name="business"
-            className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-navy placeholder-text-muted outline-none transition-colors focus:border-accent-blue"
+            className="w-full rounded-lg border border-border bg-bg-white px-4 py-2.5 text-navy placeholder-text-muted outline-none transition-colors focus:border-accent-blue"
             placeholder="Your company"
           />
         </div>
@@ -100,7 +100,7 @@ export default function ContactForm() {
             id="email"
             name="email"
             required
-            className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-navy placeholder-text-muted outline-none transition-colors focus:border-accent-blue"
+            className="w-full rounded-lg border border-border bg-bg-white px-4 py-2.5 text-navy placeholder-text-muted outline-none transition-colors focus:border-accent-blue"
             placeholder="you@company.com"
           />
         </div>
@@ -112,7 +112,7 @@ export default function ContactForm() {
             type="tel"
             id="phone"
             name="phone"
-            className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-navy placeholder-text-muted outline-none transition-colors focus:border-accent-blue"
+            className="w-full rounded-lg border border-border bg-bg-white px-4 py-2.5 text-navy placeholder-text-muted outline-none transition-colors focus:border-accent-blue"
             placeholder="(555) 123-4567"
           />
         </div>
@@ -127,7 +127,7 @@ export default function ContactForm() {
           name="message"
           required
           rows={4}
-          className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-navy placeholder-text-muted outline-none transition-colors focus:border-accent-blue resize-y"
+          className="w-full rounded-lg border border-border bg-bg-white px-4 py-2.5 text-navy placeholder-text-muted outline-none transition-colors focus:border-accent-blue resize-y"
           placeholder="Tell us about your workflow, pain points, or what you'd like to build..."
         />
       </div>

@@ -8,32 +8,32 @@ const footerLinks = [
 
 export default function Footer() {
   return (
-    <footer className="relative z-10 bg-bg-dark py-10 px-6">
-      <div className="mx-auto flex max-w-6xl flex-col items-center gap-6">
+    <footer className="relative bg-bg-dark py-10 px-6 border-dashed-t">
+      <div className="container-bl flex flex-col items-center gap-6">
         {/* Nav links */}
         <div className="flex flex-wrap items-center justify-center gap-6">
           {footerLinks.map((link) => (
             <Link
               key={link.label}
               href={link.href}
-              className="text-xs text-white/60 transition-colors hover:text-white uppercase tracking-wider"
+              className="label-mono text-white/50 transition-colors hover:text-white"
             >
               {link.label}
             </Link>
           ))}
         </div>
 
-        {/* Social + copyright */}
+        {/* Brand + social + copyright */}
         <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between sm:w-full">
-          <span className="font-heading text-xs font-semibold tracking-wide text-white/60">
-            Bartlett Labs
+          <span className="font-heading text-sm font-bold tracking-tight text-white/60">
+            BARTLETT LABS
           </span>
 
           <a
             href="https://www.linkedin.com/company/bartlett-labs"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white/60 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent-blue/50 rounded-sm"
+            className="text-white/50 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent-blue/50 rounded-sm"
             aria-label="LinkedIn"
           >
             <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
@@ -41,7 +41,7 @@ export default function Footer() {
             </svg>
           </a>
 
-          <span className="text-xs text-white/40">
+          <span className="text-xs text-white/30">
             &copy; {new Date().getFullYear()} Bartlett Labs LLC. All rights
             reserved.
           </span>

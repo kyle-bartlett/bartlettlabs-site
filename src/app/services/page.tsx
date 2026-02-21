@@ -68,15 +68,15 @@ export default function ServicesPage() {
   return (
     <>
       <Header />
-      <main className="relative z-10 pt-32 pb-16 px-6">
-        <div className="mx-auto max-w-4xl">
+      <main className="relative pt-16 pb-16 px-6">
+        <div className="container-bl">
           {/* Page header */}
-          <div className="fade-in-section mb-20 text-center">
-            <h1 className="font-heading text-3xl font-bold tracking-tight text-navy sm:text-4xl">
-              Services
+          <div className="fade-in-section mb-20 pt-8">
+            <p className="label-mono text-accent-blue mb-3">Services</p>
+            <h1 className="font-heading text-3xl font-bold tracking-tight text-navy sm:text-4xl max-w-lg">
+              What we build.
             </h1>
-            <div className="section-divider mx-auto mt-4 w-16" />
-            <p className="mt-6 text-lg text-silver">
+            <p className="mt-4 text-lg text-silver max-w-lg">
               Fixed-scope quotes in 24 hours. No hourly billing, no surprises.
             </p>
           </div>
@@ -88,36 +88,36 @@ export default function ServicesPage() {
                 <h2 className="font-heading text-xl font-bold tracking-tight text-navy sm:text-2xl">
                   {s.title}
                 </h2>
-                <p className="mt-4 text-base leading-relaxed text-silver">
+                <p className="mt-4 text-base leading-relaxed text-silver max-w-2xl">
                   {s.description}
                 </p>
 
                 <div className="mt-8 grid gap-6 sm:grid-cols-2">
                   <div className="card p-6">
-                    <h3 className="text-xs font-bold uppercase tracking-widest text-accent-blue">
+                    <h3 className="label-mono text-accent-blue mb-2">
                       Who it&apos;s for
                     </h3>
-                    <p className="mt-2 text-sm text-silver">{s.whoItsFor}</p>
+                    <p className="text-sm text-silver">{s.whoItsFor}</p>
                   </div>
                   <div className="card p-6">
-                    <h3 className="text-xs font-bold uppercase tracking-widest text-accent-blue">
+                    <h3 className="label-mono text-accent-blue mb-2">
                       Timeline
                     </h3>
-                    <p className="mt-2 text-sm text-silver">{s.timeline}</p>
-                    <h3 className="mt-4 text-xs font-bold uppercase tracking-widest text-accent-blue">
+                    <p className="text-sm text-silver">{s.timeline}</p>
+                    <h3 className="label-mono text-accent-blue mt-4 mb-2">
                       What you provide
                     </h3>
-                    <p className="mt-2 text-sm text-silver">
+                    <p className="text-sm text-silver">
                       {s.clientProvides}
                     </p>
                   </div>
                 </div>
 
                 <div className="mt-6 card p-6">
-                  <h3 className="text-xs font-bold uppercase tracking-widest text-accent-blue">
+                  <h3 className="label-mono text-accent-blue mb-3">
                     Deliverables
                   </h3>
-                  <ul className="mt-3 space-y-2 text-sm text-silver">
+                  <ul className="space-y-2 text-sm text-silver">
                     {s.deliverables.map((d) => (
                       <li key={d} className="flex items-start gap-2">
                         <span className="mt-1.5 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-accent-blue" />

@@ -12,7 +12,7 @@ const services = [
       "Automated email follow-up",
     ],
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" className="h-8 w-8 stroke-accent-blue" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <svg viewBox="0 0 24 24" fill="none" className="h-7 w-7 stroke-navy" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <rect x="3" y="3" width="18" height="18" rx="2" />
         <path d="M3 9h18" />
         <path d="M9 21V9" />
@@ -30,11 +30,8 @@ const services = [
       "Dashboard & analytics",
     ],
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" className="h-8 w-8 stroke-accent-blue" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 2a4 4 0 0 1 4 4v2a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4Z" />
-        <path d="M16 14H8a4 4 0 0 0-4 4v0a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v0a4 4 0 0 0-4-4Z" />
-        <circle cx="9" cy="6" r="0.5" fill="currentColor" className="text-accent-blue" />
-        <circle cx="15" cy="6" r="0.5" fill="currentColor" className="text-accent-blue" />
+      <svg viewBox="0 0 24 24" fill="none" className="h-7 w-7 stroke-navy" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
       </svg>
     ),
   },
@@ -49,7 +46,7 @@ const services = [
       "Training & handoff",
     ],
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" className="h-8 w-8 stroke-accent-blue" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <svg viewBox="0 0 24 24" fill="none" className="h-7 w-7 stroke-navy" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 2v4" />
         <path d="M12 18v4" />
         <path d="M4.93 4.93l2.83 2.83" />
@@ -65,13 +62,13 @@ const services = [
 
 export default function Services() {
   return (
-    <section className="relative z-10 py-24 px-6">
-      <div className="mx-auto max-w-6xl">
-        <div className="fade-in-section mb-16 text-center">
-          <h2 className="font-heading text-2xl font-bold tracking-tight text-navy sm:text-3xl">
-            What We Build
+    <section className="relative py-20 px-6">
+      <div className="container-bl">
+        <div className="fade-in-section mb-12">
+          <p className="label-mono text-accent-blue mb-3">Services</p>
+          <h2 className="font-heading text-2xl font-bold tracking-tight text-navy sm:text-3xl max-w-lg">
+            What we build.
           </h2>
-          <div className="section-divider mx-auto mt-4 w-16" />
         </div>
 
         <div className="grid gap-6 md:grid-cols-3">
@@ -81,14 +78,14 @@ export default function Services() {
               className="card fade-in-section flex flex-col p-8"
             >
               <div className="mb-4">{s.icon}</div>
-              <h3 className="font-heading text-lg font-semibold text-navy">
+              <h3 className="font-heading text-base font-semibold text-navy">
                 {s.title}
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-silver">
                 {s.description}
               </p>
 
-              <p className="mt-4 text-xs text-text-muted uppercase tracking-wider">
+              <p className="mt-4 label-mono text-text-muted">
                 Timeline: {s.timeline}
               </p>
 
@@ -102,7 +99,10 @@ export default function Services() {
               </ul>
 
               <div className="mt-auto pt-6">
-                <Link href="/contact" className="btn-secondary w-full text-center text-xs">
+                <Link
+                  href="/contact"
+                  className="btn-secondary w-full text-center text-xs"
+                >
                   Get a quote
                 </Link>
               </div>
