@@ -1,10 +1,11 @@
 "use client";
+"use no memo";
 
-import { useRef, useEffect, useSyncExternalStore } from "react";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { useRef, useSyncExternalStore } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { Edges, Html, Line } from "@react-three/drei";
 import Link from "next/link";
-import * as THREE from "three";
+import type { Mesh } from "three";
 
 /* ── reduced-motion check (client only, ssr: false) ─────── */
 function subscribeToMotionPreference(callback: () => void) {
@@ -46,10 +47,8 @@ const BLOCKS: BlockData[] = [
 ];
 
 const CENTER: [number, number, number] = [0, 0, 0];
-const WHITE_MAT = new THREE.MeshBasicMaterial({ color: 0xffffff });
-const BLUE_MAT = new THREE.MeshBasicMaterial({ color: 0x2563eb });
 
-/* ── floating outer block (imperative geometry) ──────────── */
+/* ── floating outer block ────────────────────────────────── */
 function FloatingBlock({
   pos,
   size,
@@ -58,73 +57,56 @@ function FloatingBlock({
   phase,
   paused,
 }: BlockData & { paused: boolean }) {
-  const groupRef = useRef<THREE.Group>(null!);
-  const meshRef = useRef<THREE.Mesh>(null!);
-
-  useEffect(() => {
-    const geo = new THREE.BoxGeometry(...size);
-    meshRef.current.geometry = geo;
-    meshRef.current.material = WHITE_MAT;
-    groupRef.current.position.set(...pos);
-    return () => { geo.dispose(); };
-  }, [pos, size]);
+  const ref = useRef<Mesh>(null!);
 
   useFrame(({ clock }) => {
     if (paused) return;
-    groupRef.current.position.y =
+    ref.current.position.y =
       pos[1] + Math.sin(clock.elapsedTime * 1.8 + phase) * 0.4;
   });
 
   return (
-    <group ref={groupRef}>
-      <mesh ref={meshRef}>
-        <Edges color="#000000" />
-        <Html center style={{ pointerEvents: "none" }}>
-          <Link
-            href={href}
-            className="hero3d-label"
-            style={{ pointerEvents: "auto" }}
-          >
-            {label}
-          </Link>
-        </Html>
-      </mesh>
-    </group>
+    <mesh ref={ref} position={pos}>
+      <boxGeometry args={size} />
+      <meshBasicMaterial color="#ffffff" />
+      <Edges color="#000000" />
+      <Html center style={{ pointerEvents: "none" }}>
+        <Link
+          href={href}
+          className="hero3d-label"
+          style={{ pointerEvents: "auto" }}
+        >
+          {label}
+        </Link>
+      </Html>
+    </mesh>
   );
 }
 
-/* ── center AI block (imperative geometry) ───────────────── */
+/* ── center AI block ─────────────────────────────────────── */
 function CenterBlock({ paused }: { paused: boolean }) {
-  const groupRef = useRef<THREE.Group>(null!);
-  const meshRef = useRef<THREE.Mesh>(null!);
-
-  useEffect(() => {
-    const geo = new THREE.BoxGeometry(1.4, 1.4, 1.4);
-    meshRef.current.geometry = geo;
-    meshRef.current.material = WHITE_MAT;
-    return () => { geo.dispose(); };
-  }, []);
+  const ref = useRef<Mesh>(null!);
 
   useFrame(({ clock }) => {
     if (paused) return;
-    groupRef.current.position.y = Math.sin(clock.elapsedTime * 1.2) * 0.25;
+    ref.current.position.y = Math.sin(clock.elapsedTime * 1.2) * 0.25;
   });
 
   return (
-    <group ref={groupRef}>
-      <mesh ref={meshRef}>
-        <Edges color="#000000" />
-        <Html center style={{ pointerEvents: "none" }}>
-          <Link
-            href="/services"
-            className="hero3d-label hero3d-label--center"
-            style={{ pointerEvents: "auto" }}
-          >
-            AI
-          </Link>
-        </Html>
-      </mesh>
-    </group>
+    <mesh ref={ref} position={CENTER}>
+      <boxGeometry args={[1.4, 1.4, 1.4]} />
+      <meshBasicMaterial color="#ffffff" />
+      <Edges color="#000000" />
+      <Html center style={{ pointerEvents: "none" }}>
+        <Link
+          href="/services"
+          className="hero3d-label hero3d-label--center"
+          style={{ pointerEvents: "auto" }}
+        >
+          AI
+        </Link>
+      </Html>
+    </mesh>
   );
 }
 
@@ -138,14 +120,7 @@ function Pulse({
   offset: number;
   paused: boolean;
 }) {
-  const ref = useRef<THREE.Mesh>(null!);
-
-  useEffect(() => {
-    const geo = new THREE.BoxGeometry(0.12, 0.12, 0.12);
-    ref.current.geometry = geo;
-    ref.current.material = BLUE_MAT;
-    return () => { geo.dispose(); };
-  }, []);
+  const ref = useRef<Mesh>(null!);
 
   useFrame(({ clock }) => {
     if (paused) return;
@@ -157,20 +132,12 @@ function Pulse({
     );
   });
 
-  return <mesh ref={ref} />;
-}
-
-/* ── ambient light setup ─────────────────────────────────── */
-function SceneLight() {
-  const { scene } = useThree();
-
-  useEffect(() => {
-    const light = new THREE.AmbientLight(0xffffff, 1);
-    scene.add(light);
-    return () => { scene.remove(light); };
-  }, [scene]);
-
-  return null;
+  return (
+    <mesh ref={ref}>
+      <boxGeometry args={[0.12, 0.12, 0.12]} />
+      <meshBasicMaterial color="#2563EB" />
+    </mesh>
+  );
 }
 
 /* ── scene composition ───────────────────────────────────── */
@@ -179,7 +146,7 @@ function Scene() {
 
   return (
     <>
-      <SceneLight />
+      <ambientLight intensity={1} />
 
       {/* Thin black connector lines */}
       {BLOCKS.map((b) => (
