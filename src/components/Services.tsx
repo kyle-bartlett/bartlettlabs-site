@@ -1,112 +1,99 @@
-import Link from "next/link";
+"use client";
+
+import { motion } from "framer-motion";
+import {
+  MessageSquare,
+  Calendar,
+  Activity,
+  ShieldCheck,
+} from "lucide-react";
+import AuditButton from "./AuditButton";
 
 const services = [
   {
-    title: "Website + Lead Capture System",
+    title: "The Lead Wrangler",
     description:
-      "Modern site + forms + tracking + automated follow-up.",
-    timeline: "1\u20132 weeks",
-    includes: [
-      "Custom design",
-      "Analytics dashboard",
-      "Automated email follow-up",
-    ],
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" className="h-7 w-7 stroke-navy" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="3" y="3" width="18" height="18" rx="2" />
-        <path d="M3 9h18" />
-        <path d="M9 21V9" />
-      </svg>
-    ),
+      "24/7 SMS/Chat response so you never miss a job while you're under a hood or in the field.",
+    icon: <MessageSquare className="w-8 h-8 text-burnt-orange" />,
+    gridSpan: "md:col-span-2",
+    tag: "Lead Capture",
+    dark: true,
   },
   {
-    title: "AI Assistant (Chat + SMS + Call)",
+    title: "Weekend Recovery",
     description:
-      "Answers FAQs, qualifies leads, books appointments.",
-    timeline: "2\u20133 weeks",
-    includes: [
-      "Custom-trained AI",
-      "Multi-channel deployment",
-      "Dashboard & analytics",
-    ],
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" className="h-7 w-7 stroke-navy" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-      </svg>
-    ),
+      "Automating the 'Sunday Paperwork' — invoicing and scheduling handled while you're off the clock.",
+    icon: <Calendar className="w-8 h-8 text-sage-green" />,
+    gridSpan: "md:col-span-1",
+    tag: "Admin Sync",
+    dark: false,
   },
   {
-    title: "Internal Automation Sprint",
+    title: "The Custom Lab Build",
     description:
-      "Automate repetitive ops: reporting, scheduling, data sync.",
-    timeline: "1\u20132 weeks",
-    includes: [
-      "Process audit",
-      "Custom integrations",
-      "Training & handoff",
-    ],
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" className="h-7 w-7 stroke-navy" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 2v4" />
-        <path d="M12 18v4" />
-        <path d="M4.93 4.93l2.83 2.83" />
-        <path d="M16.24 16.24l2.83 2.83" />
-        <path d="M2 12h4" />
-        <path d="M18 12h4" />
-        <path d="M4.93 19.07l2.83-2.83" />
-        <path d="M16.24 7.76l2.83-2.83" />
-      </svg>
-    ),
+      "High-end engineering for complex operations that have outgrown off-the-shelf software.",
+    icon: <Activity className="w-8 h-8 text-burnt-orange" />,
+    gridSpan: "md:col-span-1",
+    tag: "Custom Engine",
+    dark: false,
+  },
+  {
+    title: "Digital Vault",
+    description:
+      "Enterprise-grade security. Your data stays in your shop and never trains public AI models.",
+    icon: <ShieldCheck className="w-8 h-8 text-sage-green" />,
+    gridSpan: "md:col-span-2",
+    tag: "Security First",
+    dark: true,
   },
 ];
 
+const springConfig = { mass: 1, stiffness: 170, damping: 26 };
+
 export default function Services() {
   return (
-    <section className="relative py-20 px-6">
+    <section id="services" className="relative py-20 px-6">
       <div className="container-bl">
-        <div className="fade-in-section mb-12">
-          <p className="label-mono text-accent-blue mb-3">Services</p>
-          <h2 className="font-heading text-2xl font-bold tracking-tight text-navy sm:text-3xl max-w-lg">
-            What we build.
+        <div className="fade-in-section mb-12 text-center">
+          <p className="label-mono text-burnt-orange mb-3">What We Build</p>
+          <h2 className="font-heading text-2xl font-bold tracking-tight text-navy sm:text-3xl max-w-lg mx-auto">
+            Your Workshop Toolbox
           </h2>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-3">
-          {services.map((s) => (
-            <div
-              key={s.title}
-              className="card fade-in-section flex flex-col p-8"
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {services.map((service) => (
+            <motion.div
+              key={service.title}
+              whileHover={{ y: -5 }}
+              transition={{ type: "spring", ...springConfig }}
+              className={`p-8 rounded-2xl border border-zinc-200 shadow-sm flex flex-col justify-between ${service.gridSpan} ${
+                service.dark
+                  ? "bg-navy text-white"
+                  : "bg-white text-navy"
+              }`}
             >
-              <div className="mb-4">{s.icon}</div>
-              <h3 className="font-heading text-base font-semibold text-navy">
-                {s.title}
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-silver">
-                {s.description}
-              </p>
-
-              <p className="mt-4 label-mono text-text-muted">
-                Timeline: {s.timeline}
-              </p>
-
-              <ul className="mt-4 space-y-1.5 text-sm text-silver">
-                {s.includes.map((item) => (
-                  <li key={item} className="flex items-start gap-2">
-                    <span className="mt-1.5 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-accent-blue" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-
-              <div className="mt-auto pt-6">
-                <Link
-                  href="/contact"
-                  className="btn-secondary w-full text-center text-xs"
-                >
-                  Get a quote
-                </Link>
+              <div>
+                <div className="mb-4">{service.icon}</div>
+                <span className="label-mono opacity-70">{service.tag}</span>
+                <h3 className="text-2xl font-bold mt-2 mb-4 font-heading">
+                  {service.title}
+                </h3>
+                <p className="text-lg leading-relaxed opacity-90">
+                  {service.description}
+                </p>
               </div>
-            </div>
+
+              <AuditButton
+                className={`mt-8 w-fit px-6 py-2 rounded-lg font-bold text-sm border-2 inline-flex items-center gap-2 transition-colors ${
+                  service.dark
+                    ? "border-burnt-orange text-burnt-orange hover:bg-burnt-orange hover:text-white"
+                    : "border-navy text-navy hover:bg-navy hover:text-white"
+                }`}
+              >
+                Learn More
+              </AuditButton>
+            </motion.div>
           ))}
         </div>
       </div>

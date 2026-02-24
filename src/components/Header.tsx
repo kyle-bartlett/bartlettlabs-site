@@ -1,11 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
+import AuditButton from "./AuditButton";
 
 const navLinks = [
-  { label: "Services", href: "/services" },
-  { label: "About", href: "/about" },
+  { label: "Services", href: "#services" },
+  { label: "About", href: "#about" },
+  { label: "Audit", href: "#audit" },
 ];
 
 export default function Header() {
@@ -28,35 +29,35 @@ export default function Header() {
     >
       <div className="container-bl py-3 lg:py-4">
         <nav className="flex items-center justify-between">
-          {/* Text wordmark */}
-          <Link
-            href="/"
-            className="font-heading text-base font-bold tracking-tight text-navy transition-colors hover:text-accent-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-blue/60 rounded-sm sm:text-lg"
+          {/* Wordmark in Slab Serif */}
+          <a
+            href="#"
+            className="font-heading text-base font-bold tracking-tight text-navy sm:text-lg"
           >
             BARTLETT LABS
-          </Link>
+          </a>
 
           {/* Desktop nav */}
           <div className="hidden items-center gap-8 md:flex">
             {navLinks.map((item) => (
-              <Link
+              <a
                 key={item.label}
                 href={item.href}
-                className="text-sm text-silver transition-colors hover:text-navy focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent-blue/50 focus-visible:rounded-sm"
+                className="text-sm text-silver transition-colors hover:text-navy focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-burnt-orange/50 focus-visible:rounded-sm"
               >
                 {item.label}
-              </Link>
+              </a>
             ))}
-            <Link href="/contact" className="btn-secondary text-xs py-2 px-4">
-              Contact
-            </Link>
+            <AuditButton className="btn-primary text-xs py-2 px-5">
+              Free Efficiency Audit
+            </AuditButton>
           </div>
 
           {/* Mobile hamburger */}
           <button
             type="button"
             onClick={() => setMenuOpen((prev) => !prev)}
-            className="flex flex-col items-center justify-center gap-1.5 p-2 md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-blue/60 rounded-sm"
+            className="flex flex-col items-center justify-center gap-1.5 p-2 md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-burnt-orange/60 rounded-sm"
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
           >
@@ -84,22 +85,18 @@ export default function Header() {
         <div className="border-dashed-t bg-bg-primary md:hidden">
           <div className="container-bl flex flex-col gap-4 py-6">
             {navLinks.map((item) => (
-              <Link
+              <a
                 key={item.label}
                 href={item.href}
                 onClick={closeMenu}
                 className="text-sm text-silver transition-colors hover:text-navy"
               >
                 {item.label}
-              </Link>
+              </a>
             ))}
-            <Link
-              href="/contact"
-              onClick={closeMenu}
-              className="btn-primary text-xs py-2 px-5 text-center w-fit"
-            >
-              Contact
-            </Link>
+            <AuditButton className="btn-primary text-xs py-2 px-5 text-center w-fit">
+              Free Efficiency Audit
+            </AuditButton>
           </div>
         </div>
       )}

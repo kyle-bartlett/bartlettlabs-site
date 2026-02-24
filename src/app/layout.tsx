@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import Script from "next/script";
+import { Inter, Arvo } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -9,15 +8,22 @@ const inter = Inter({
   display: "swap",
 });
 
+const arvo = Arvo({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+  variable: "--font-arvo",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
-  title: "Bartlett Labs | AI Automation & Business Systems | Houston, TX",
+  title: "Bartlett Labs | AI Automation for Local Business | Crosby, TX",
   description:
-    "Custom AI assistants and automation workflows that handle your leads, scheduling, and data entry. Get your time back and scale without adding headcount. Houston, TX.",
+    "Purdue-trained engineer building sturdy automated systems for local businesses. Lead capture, AI follow-up, invoicing automation. Hand-built in Crosby, TX.",
   metadataBase: new URL("https://bartlettlabs.io"),
   openGraph: {
-    title: "Bartlett Labs | AI Automation & Business Systems | Houston, TX",
+    title: "Bartlett Labs | AI Automation for Local Business | Crosby, TX",
     description:
-      "Custom AI assistants and automation workflows that handle your leads, scheduling, and data entry. Houston, TX.",
+      "World-class systems. Small-town values. Automated lead capture, scheduling, and invoicing for local business owners.",
     url: "https://bartlettlabs.io",
     siteName: "Bartlett Labs",
     type: "website",
@@ -26,15 +32,15 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Bartlett Labs — AI Automation & Business Systems",
+        alt: "Bartlett Labs — World-class systems. Small-town values.",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Bartlett Labs | AI Automation & Business Systems | Houston, TX",
+    title: "Bartlett Labs | AI Automation for Local Business | Crosby, TX",
     description:
-      "Custom AI assistants and automation workflows that handle your leads, scheduling, and data entry. Houston, TX.",
+      "World-class systems. Small-town values. Hand-built automation for local businesses in Crosby, TX.",
     images: ["/og-image.png"],
   },
 };
@@ -45,16 +51,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={`${inter.variable} ${arvo.variable}`}>
       <head />
-
       <body className="bg-bg-primary text-text-primary font-body antialiased">
         {children}
-
-        <Script
-          src="https://assets.calendly.com/assets/external/widget.js"
-          strategy="lazyOnload"
-        />
       </body>
     </html>
   );

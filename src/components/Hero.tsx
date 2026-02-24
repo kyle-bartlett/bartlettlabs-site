@@ -1,4 +1,4 @@
-import CalendlyButton from "./CalendlyButton";
+import AuditButton from "./AuditButton";
 import HeroVisual from "./HeroVisual";
 
 export default function Hero() {
@@ -9,7 +9,7 @@ export default function Hero() {
           {/* Left column — text */}
           <div className="lg:col-span-7 flex flex-col gap-6">
             <div className="flex flex-wrap gap-2">
-              {["AI Automation", "Business Systems", "Houston, TX"].map(
+              {["Purdue Engineering", "AI Automation", "Crosby, TX"].map(
                 (tag) => (
                   <span
                     key={tag}
@@ -17,22 +17,25 @@ export default function Hero() {
                   >
                     {tag}
                   </span>
-                )
+                ),
               )}
             </div>
 
             <h1 className="font-heading text-4xl font-bold tracking-tight text-navy leading-[1.1] sm:text-5xl lg:text-6xl">
-              We build the AI&nbsp;systems that run your&nbsp;business.
+              World-class systems.
+              <br />
+              Small-town values.
             </h1>
 
             <p className="max-w-xl text-lg leading-relaxed text-silver">
-              Custom automation, AI&nbsp;assistants, and workflow engineering for
-              Houston companies that are done doing things the hard&nbsp;way.
+              I&rsquo;m an Industrial Engineer who grew up in a family Ford
+              dealership. I build the sturdy, automated systems that give local
+              business owners their Sundays back.
             </p>
 
             <div className="flex flex-col gap-3 sm:flex-row sm:gap-4 pt-2">
-              <CalendlyButton className="btn-primary">
-                Book a 15-Min Efficiency Audit
+              <AuditButton className="btn-primary">
+                Request a 10-Minute Efficiency Audit
                 <svg
                   viewBox="0 0 24 24"
                   fill="none"
@@ -44,8 +47,8 @@ export default function Hero() {
                 >
                   <polyline points="9 18 15 12 9 6" />
                 </svg>
-              </CalendlyButton>
-              <a href="#how-it-works" className="btn-secondary">
+              </AuditButton>
+              <a href="#services" className="btn-secondary">
                 See How It Works
                 <svg
                   viewBox="0 0 24 24"
@@ -56,21 +59,18 @@ export default function Hero() {
                   strokeLinejoin="round"
                   className="h-4 w-4"
                 >
-                  <polyline points="9 18 15 12 9 6" />
+                  <polyline points="6 9 12 15 18 9" />
                 </svg>
               </a>
             </div>
           </div>
 
-          {/* Right column — animated system visual */}
+          {/* Right column — 3D LEGO Baseplate */}
           <div className="lg:col-span-5 flex justify-center lg:justify-end">
             <HeroVisual />
           </div>
         </div>
       </div>
-
-      {/* Bottom dashed border */}
-      <div className="absolute bottom-0 left-0 right-0 border-dashed-b" />
     </section>
   );
 }

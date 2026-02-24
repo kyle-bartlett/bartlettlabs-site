@@ -1,21 +1,26 @@
-@import url("https://assets.calendly.com/assets/external/widget.css");
 @import "tailwindcss";
 
 @theme {
-  --color-bg-primary: #F7F8F6;
-  --color-bg-secondary: #ECEEE9;
+  --color-bg-primary: #F5F3F0;
+  --color-bg-secondary: #EDE9E3;
   --color-bg-white: #FFFFFF;
-  --color-accent-blue: #2563EB;
-  --color-accent-green: #16A34A;
-  --color-accent-light: #3B82F6;
-  --color-navy: #1A1A1A;
+  --color-navy: #1B263B;
+  --color-burnt-orange: #C05746;
+  --color-burnt-orange-dark: #A84A3C;
+  --color-sage-green: #84A59D;
+  --color-sage-green-dark: #6E8F87;
   --color-silver: #6B7280;
-  --color-text-primary: #1A1A1A;
+  --color-text-primary: #1B263B;
   --color-text-muted: #9CA3AF;
-  --color-bg-dark: #111111;
   --color-border: #D4D4D4;
 
-  --font-heading: var(--font-inter), "Inter", sans-serif;
+  /* Legacy aliases for sub-pages not yet migrated */
+  --color-accent-blue: #C05746;
+  --color-accent-green: #84A59D;
+  --color-accent-light: #C05746;
+  --color-bg-dark: #1B263B;
+
+  --font-heading: var(--font-arvo), "Arvo", serif;
   --font-body: var(--font-inter), "Inter", sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
 }
@@ -36,11 +41,11 @@ body {
 }
 
 ::selection {
-  background-color: color-mix(in srgb, var(--color-accent-blue) 25%, transparent);
+  background-color: color-mix(in srgb, var(--color-burnt-orange) 25%, transparent);
   color: var(--color-navy);
 }
 
-/* -- Container (Baseten-style max-width) ------------------ */
+/* -- Container -------------------------------------------- */
 
 .container-bl {
   width: 100%;
@@ -49,7 +54,7 @@ body {
   padding: 0 1.5rem;
 }
 
-/* -- Dashed border (Baseten-style separators) ------------- */
+/* -- Borders ---------------------------------------------- */
 
 .border-dashed-b {
   border-bottom: 1px dashed var(--color-border);
@@ -59,7 +64,7 @@ body {
   border-top: 1px dashed var(--color-border);
 }
 
-/* -- Mono uppercase label (Baseten-style tags) ------------ */
+/* -- Mono uppercase label --------------------------------- */
 
 .label-mono {
   font-family: var(--font-mono);
@@ -74,100 +79,75 @@ body {
 
 .card {
   background-color: var(--color-bg-white);
-  border-radius: 0.75rem;
+  border-radius: 1rem;
   border: 1px solid var(--color-border);
-  transition: background-color 0.2s ease, border-color 0.2s ease;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 }
 
 .card:hover {
-  background-color: var(--color-bg-secondary);
   border-color: #B0B0B0;
+  transform: translateY(-2px);
 }
 
 /* -- Section accent (dark band) --------------------------- */
 
 .section-accent {
-  background-color: var(--color-bg-dark);
+  background-color: var(--color-navy);
   color: #ffffff;
 }
 
-/* -- Buttons (Baseten-inspired) --------------------------- */
+/* -- Buttons (Workshop-themed) ---------------------------- */
 
-/* Solid dark button — sharp corners, pure black */
+/* Primary: Burnt Orange, rounded, bold */
 .btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
   color: #ffffff;
-  background-color: #000000;
-  border: 1px solid #000000;
-  border-radius: 0;
+  background-color: var(--color-burnt-orange);
+  border: 2px solid var(--color-burnt-orange);
+  border-radius: 0.5rem;
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  transition: color 0.24s ease, background-color 0.24s ease, border-color 0.24s ease;
+  transition: background-color 0.24s ease, border-color 0.24s ease, transform 0.1s ease;
 }
 
 .btn-primary:hover {
-  background-color: var(--color-accent-blue);
-  border-color: var(--color-accent-blue);
-  color: white;
+  background-color: var(--color-burnt-orange-dark);
+  border-color: var(--color-burnt-orange-dark);
 }
 
-/* Outline button — sharp corners, black border */
+.btn-primary:active {
+  transform: scale(0.97);
+}
+
+/* Secondary: Outline with Navy border, rounded */
 .btn-secondary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: #000000;
-  background-color: #ffffff;
-  border: 1px solid #000000;
-  border-radius: 0;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-navy);
+  background-color: transparent;
+  border: 2px solid var(--color-navy);
+  border-radius: 0.5rem;
   cursor: pointer;
   transition: background-color 0.24s ease, border-color 0.24s ease;
 }
 
 .btn-secondary:hover {
-  background-color: var(--color-bg-secondary);
-  border-color: var(--color-accent-blue);
-}
-
-/* Green accent button */
-.btn-green {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: white;
-  background-color: var(--color-accent-green);
-  border: 1px solid var(--color-accent-green);
-  border-radius: 0;
-  cursor: pointer;
-  transition: background-color 0.24s ease;
-}
-
-.btn-green:hover {
-  background-color: #15803d;
+  background-color: var(--color-navy);
+  color: #ffffff;
 }
 
 /* Ghost button for dark backgrounds */
@@ -177,15 +157,13 @@ body {
   justify-content: center;
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
   color: white;
   background-color: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 0;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 0.5rem;
   cursor: pointer;
   transition: background-color 0.24s ease, border-color 0.24s ease;
 }
@@ -198,9 +176,8 @@ body {
 /* Focus-visible */
 .btn-primary:focus-visible,
 .btn-secondary:focus-visible,
-.btn-green:focus-visible,
 .btn-ghost:focus-visible {
-  outline: 2px solid var(--color-accent-blue);
+  outline: 2px solid var(--color-burnt-orange);
   outline-offset: 2px;
 }
 
@@ -239,27 +216,15 @@ body {
 
 /* Labels overlaid on 3D blocks via drei Html */
 .hero3d-label {
-  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
-  font-size: 10px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #000;
-  text-decoration: none;
-  white-space: nowrap;
-  cursor: pointer;
-  user-select: none;
-  transition: color 0.2s ease;
-}
-
-.hero3d-label:hover {
-  color: #2563EB;
-}
-
-.hero3d-label--center {
-  font-size: 16px;
+  font-family: var(--font-mono);
+  font-size: 9px;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #ffffff;
+  white-space: nowrap;
+  user-select: none;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 /* -- Reduced motion --------------------------------------- */
@@ -274,7 +239,6 @@ body {
   .card,
   .btn-primary,
   .btn-secondary,
-  .btn-green,
   .btn-ghost {
     transition: none;
   }

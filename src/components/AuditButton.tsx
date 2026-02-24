@@ -1,22 +1,14 @@
 "use client";
 
-/**
- * Legacy compatibility wrapper — redirects to GHL booking.
- * All new code should import AuditButton directly.
- */
-
 const GHL_BOOKING_URL =
   "https://api.leadconnectorhq.com/widget/booking/tnWattFiELBGpctlleU8";
 
-interface CalendlyButtonProps {
+interface AuditButtonProps {
   className?: string;
   children: React.ReactNode;
 }
 
-export default function CalendlyButton({
-  className,
-  children,
-}: CalendlyButtonProps) {
+export default function AuditButton({ className, children }: AuditButtonProps) {
   return (
     <a
       href={GHL_BOOKING_URL}
